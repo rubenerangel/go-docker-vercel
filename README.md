@@ -7,6 +7,8 @@
 
 Proyecto de aprendizaje: un servidor HTTP escrito en **Go**, empaquetado con un **Dockerfile multi-stage** (`builder` + `runner`) y desplegado **directamente a Vercel desde la línea de comandos**, sin pasar por GitHub, sin CI y sin panel web.
 
+**Demo en vivo:** https://05-vercel-bice.vercel.app
+
 El objetivo no era la app (es un "hello world" a propósito), sino dominar el camino completo: **código → imagen optimizada → contenedor corriendo en producción** con un solo comando.
 
 ## Qué demuestra este proyecto
@@ -112,7 +114,14 @@ vercel
 vercel --prod
 ```
 
-Vercel usa el archivo `Dockerfile.vercel` para construir la imagen, ejecuta la etapa final (`runner`) e inyecta `PORT` en el contenedor.
+Vercel usa el archivo `Dockerfile.vercel` para construir la imagen, ejecuta la etapa final (`runner`) e inyecta `PORT` en el contenedor. El proyecto queda con el preset **Container**.
+
+Resultado en producción:
+
+```bash
+curl https://05-vercel-bice.vercel.app
+# Hello from a container on Vercel 👋
+```
 
 > La carpeta `.vercel/` contiene los IDs del proyecto y de la organización, por eso está en `.gitignore`.
 
